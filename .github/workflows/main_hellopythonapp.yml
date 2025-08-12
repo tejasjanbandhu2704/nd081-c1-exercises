@@ -28,6 +28,7 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          pip install -r web/requirements.txt  
       
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -39,7 +40,8 @@ jobs:
         with:
           name: python-app
           path: |
-            .
+            
+            web 
             !venv/
 
   deploy:
@@ -68,4 +70,6 @@ jobs:
         with:
           app-name: 'helloPythonApp'
           slot-name: 'Production'
+          package: './web'
+
           
